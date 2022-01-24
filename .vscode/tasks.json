@@ -1,0 +1,34 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++ build active file",
+			"command": "/usr/bin/clang++",
+			"args": [
+				"-std=c++17",
+				"-fdiagnostics-color=always",
+				"-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.out", 
+				// 1. execute .out file 
+				"&&", //to join building and running of the file 
+				"${fileDirname}/${fileBasenameNoExtension}.out", 
+				//2. file input
+				"<", "${fileDirname}/sample_input.txt",
+				//3. file output
+				">",
+				"${fileDirname}/sample_output.txt"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/clang++"
+		}
+	]
+}
